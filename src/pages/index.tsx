@@ -1,7 +1,7 @@
 import * as React from 'react';
 
+import Home from '@/components/Home';
 import Layout from '@/components/layout/Layout';
-import Message from '@/components/Message/Message';
 import Seo from '@/components/Seo';
 
 /**
@@ -19,7 +19,7 @@ export default function HomePage() {
       <Seo />
 
       <main>
-        <Message />
+        <Home />
       </main>
     </Layout>
   );
