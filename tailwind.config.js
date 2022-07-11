@@ -7,7 +7,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        primary: ['Inter', ...fontFamily.sans],
+        primary: ['Open Sans', ...fontFamily.sans],
+        title: ['Lexend Deca', 'Open Sans', ...fontFamily.sans],
       },
       colors: {
         primary: {
@@ -36,6 +37,7 @@ module.exports = {
           800: '#2F3136',
           900: '#202225',
         },
+        brand: '#5865f2',
       },
       keyframes: {
         flicker: {

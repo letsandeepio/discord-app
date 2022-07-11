@@ -1,10 +1,15 @@
 import React from 'react';
 
+import DiscordLogo from '@/components/DiscordLogo';
+
 const Home = () => {
   return (
     <div className='flex h-screen text-gray-100'>
       <div className='space-y-2 overflow-y-scroll bg-gray-900 p-3'>
-        {[...Array(40)].map((_, index) => {
+        <div className='flex h-12 w-12 items-center justify-center rounded-full bg-gray-800 text-gray-100 transition duration-200 hover:bg-brand hover:text-white'>
+          <DiscordLogo className='h-5 w-7' />
+        </div>
+        {/* {[...Array(40)].map((_, index) => {
           return (
             <div
               key={index}
@@ -12,14 +17,13 @@ const Home = () => {
             >
               {index}
             </div>
-          );
-        })}
+        })} */}
       </div>
       <div className='flex w-60 flex-col  bg-gray-800'>
-        <div className='flex h-12 flex-shrink-0 items-center px-3 text-gray-300 shadow-md'>
+        <div className='flex h-12 flex-shrink-0 items-center px-3 font-title font-bold shadow-md'>
           Tailwind CSS
         </div>
-        <div className='flex-1 space-y-2 overflow-y-scroll p-3 text-gray-300'>
+        <div className='flex-1 space-y-2 overflow-y-scroll p-3 font-medium text-gray-300'>
           <p className='text-white'>channel (unread)</p>
           <p className='text-white'>channel (unread)</p>
           {[...Array(40)].map((_, i) => (
