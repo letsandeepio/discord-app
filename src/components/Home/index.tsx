@@ -14,7 +14,6 @@ const Home = () => {
           ))}
         </div>
       </div>
-
       <div className='flex flex-1 flex-col bg-gray-700'>
         <div className='flex h-12 items-center px-3 shadow-md'>general</div>
         <div className='flex-1 space-y-4 overflow-y-scroll p-3'>
