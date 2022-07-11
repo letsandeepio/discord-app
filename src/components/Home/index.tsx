@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div className='flex h-screen text-gray-100'>
       <div className='space-y-2 overflow-y-scroll bg-gray-900 p-3'>
-        <div className='flex h-12 w-12 items-center justify-center rounded-full bg-gray-800 text-gray-100 transition duration-200 hover:bg-brand hover:text-white'>
+        <div className='flex h-12 w-12 items-center justify-center rounded-full bg-gray-800 text-gray-100 transition duration-200 hover:rounded-2xl hover:bg-brand hover:text-white'>
           <DiscordLogo className='h-5 w-7' />
         </div>
         {/* {[...Array(40)].map((_, index) => {
