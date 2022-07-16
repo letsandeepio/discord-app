@@ -6,12 +6,12 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   mode: 'jit',
   theme: {
+    boxShadow: {
+      sm: '0 1px 0 rgba(4,4,5,0.2),0 1.5px 0 rgba(6,6,7,0.05),0 2px 0 rgba(4,4,5,0.05)',
+      md: '0 4px 4px rgba(0,0,0,0.16)',
+      lg: '0 8px 16px rgba(0,0,0,0.24)',
+    },
     extend: {
-      boxShadow: {
-        sm: '0 1px 0 rgba(4,4,5,0.2),0 1.5px 0 rgba(6,6,7,0,0.5) rgba(4,4,5,0.05)',
-        md: '0 4px 4px rgba(0,0,0.0.16)',
-        lg: '0 8px 16px rgba(0,0,0,0.24)',
-      },
       fontFamily: {
         primary: ['Open Sans', ...fontFamily.sans],
         title: ['Lexend Deca', 'Open Sans', ...fontFamily.sans],
@@ -38,6 +38,7 @@ module.exports = {
           300: '#8E9297',
           400: '#72767D',
           500: '#5C6067',
+          550: '#4f545c',
           600: '#464950',
           700: '#36393F',
           800: '#2F3136',
