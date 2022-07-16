@@ -27,7 +27,7 @@ const NavLink: React.FC<NavLinkProps> = ({ href, children }) => {
               router.pathname === href
                 ? 'rounded-2xl bg-brand text-white'
                 : 'rounded-3xl bg-gray-700 text-gray-100 hover:rounded-2xl hover:bg-brand hover:text-white'
-            } flex h-12 w-12 items-center justify-center  transition-all duration-200 `}
+            } flex h-12 w-12 items-center justify-center  overflow-hidden transition-all duration-200 `}
           >
             {children}
           </div>

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 
@@ -19,7 +20,10 @@ function MyApp({ Component, pageProps }: AppProps) {
           <NavLink href='/'>
             <DiscordLogo className='h-5 w-7' />
           </NavLink>
-          <NavLink href='/servers/1'>SK</NavLink>
+          <hr className='mx-2 rounded border-t-2 border-t-white/[.06]' />
+          <NavLink href='/servers/1'>
+            <img src='/servers/tailwind.png' alt='' />
+          </NavLink>
         </div>
         <Component {...pageProps} />
       </div>
