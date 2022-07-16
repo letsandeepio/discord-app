@@ -4,9 +4,14 @@ const { fontFamily } = require('tailwindcss/defaultTheme');
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
-  mode: "jit",
+  mode: 'jit',
   theme: {
     extend: {
+      boxShadow: {
+        sm: '0 1px 0 rgba(4,4,5,0.2),0 1.5px 0 rgba(6,6,7,0,0.5) rgba(4,4,5,0.05)',
+        md: '0 4px 4px rgba(0,0,0.0.16)',
+        lg: '0 8px 16px rgba(0,0,0,0.24)',
+      },
       fontFamily: {
         primary: ['Open Sans', ...fontFamily.sans],
         title: ['Lexend Deca', 'Open Sans', ...fontFamily.sans],
