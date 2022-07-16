@@ -7,6 +7,12 @@ import '@/styles/globals.css';
 import DiscordLogo from '@/components/DiscordLogo';
 import NavLink from '@/components/Navlink/NavLink';
 
+const servers = [
+  { id: '1', img: 'tailwind.png' },
+  { id: '2', img: 'next.png' },
+  { id: '3', img: 'mirage.png' },
+];
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
@@ -21,10 +27,13 @@ function MyApp({ Component, pageProps }: AppProps) {
             <DiscordLogo className='h-5 w-7' />
           </NavLink>
           <hr className='mx-2 rounded border-t-2 border-t-white/[.06]' />
-          <NavLink href='/servers/1'>
-            <img src='/servers/tailwind.png' alt='' />
-          </NavLink>
+          {servers.map((server) => (
+            <NavLink href={`/servers/${server.id}`} key={server.id}>
+              <img src={`/servers/${server.img}`} alt='' />
+            </NavLink>
+          ))}
         </div>
+
         <Component {...pageProps} />
       </div>
     </>

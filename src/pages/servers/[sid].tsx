@@ -1,14 +1,19 @@
+import { useRouter } from 'next/router';
 import React from 'react';
 
-const Home = () => {
+const Server1 = () => {
+  const router = useRouter();
   return (
     <>
       <div className='flex w-60 flex-col bg-gray-800'>
         <div className='flex h-12 items-center px-3 font-title font-semibold text-white shadow-md'>
-          Dashboard
+          Server {router.query.sid}
         </div>
         <div className='flex-1 space-y-2 overflow-y-scroll p-3 font-medium text-gray-300 '>
-          <p className='text-white'>Friends</p>
+          <p className='text-white'>general</p>
+          {[...Array(40)].map((_, i) => (
+            <p key={i}>channel {i}</p>
+          ))}
         </div>
       </div>
       <div className='flex flex-1 flex-col bg-gray-700'>
@@ -28,4 +33,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Server1;
