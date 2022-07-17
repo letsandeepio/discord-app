@@ -63,7 +63,7 @@ export const SpeakerphoneIcon = (props: any) => {
   );
 };
 
-export const ArrowComponent = (props: any) => {
+export const ArrowIcon = (props: any) => {
   return (
     <svg viewBox='0 0 24 24' {...props}>
       <path
