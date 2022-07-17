@@ -1,6 +1,13 @@
 import React from 'react';
 
-import { CheckIcon, ChevronIcon, VerifiedIcon } from '@/components/Icons/Icons';
+import {
+  AddPersonIcon,
+  BookIcon,
+  CheckIcon,
+  ChevronIcon,
+  SpeakerphoneIcon,
+  VerifiedIcon,
+} from '@/components/Icons/Icons';
 
 const Server1 = () => {
   return (
@@ -14,11 +21,24 @@ const Server1 = () => {
           Tailwind CSS
           <ChevronIcon className='ml-auto h-[18px] w-[18px] opacity-80' />
         </button>
-        <div className='flex-1 space-y-2 overflow-y-scroll p-3 font-medium text-gray-300 '>
-          <p className='text-white'>general</p>
-          {[...Array(40)].map((_, i) => (
-            <p key={i}>channel {i}</p>
-          ))}
+        <div className='mt-[17px] flex-1 overflow-y-scroll font-medium text-gray-300 '>
+          <div className='space-y-0.5'>
+            <a
+              href='#'
+              className='group mx-2 flex items-center rounded px-2  py-2 text-gray-300 hover:bg-gray-550/[0.16] hover:text-gray-100'
+            >
+              <BookIcon className='mr-1 h-5 w-5 text-gray-400' /> welcome
+              <AddPersonIcon className='ml-auto h-4 w-4 text-gray-200 opacity-0 transition hover:text-gray-100 group-hover:opacity-100' />
+            </a>
+            <a
+              href='#'
+              className='group mx-2 flex items-center rounded px-2  py-2 text-gray-300 hover:bg-gray-550/[0.16] hover:text-gray-100'
+            >
+              <SpeakerphoneIcon className='mr-1 h-5 w-5 text-gray-400' />
+              announcements
+              <AddPersonIcon className='ml-auto h-4 w-4 text-gray-200 opacity-0 transition hover:text-gray-100 group-hover:opacity-100' />
+            </a>
+          </div>
         </div>
       </div>
       <div className='flex flex-1 flex-col bg-gray-700'>
