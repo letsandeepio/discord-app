@@ -1,10 +1,10 @@
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
 
 import * as Icons from '@/components/Icons/Icons';
 
-import data from '../../../public/data.json';
-
-type json = { [key: string]: any };
+import data from '../../../../../public/data.json';
 
 const Server1 = () => {
   return (
@@ -63,20 +63,26 @@ interface ChannelLinkProps {
 }
 const ChannelLink = ({ channel }: ChannelLinkProps) => {
   const Icon = channel.icon ? Icons[channel.icon] : Icons.HashtagIcon;
+  const router = useRouter();
+  const active = +channel.id === Number(router?.query?.cid);
 
   return (
-    <a
-      key={channel.id}
-      href='#'
-      className='group mx-2 flex items-center rounded px-2  py-2 text-gray-300 hover:bg-gray-550/[0.16] hover:text-gray-100'
-    >
-      {Icon && (
-        <>
-          <Icon className='mr-1 h-5 w-5 text-gray-400' /> {channel.label}
-          <Icons.AddPersonIcon className='ml-auto h-4 w-4 text-gray-200 opacity-0 transition hover:text-gray-100 group-hover:opacity-100' />
-        </>
-      )}
-    </a>
+    <Link href={`/servers/${1}/channels/${channel.id}`}>
+      <a
+        className={`${
+          active
+            ? 'bg-gray-550/[0.32] text-white'
+            : 'text-gray-300  hover:text-gray-100'
+        } group mx-2 flex items-center rounded px-2  py-2 hover:bg-gray-550/[0.16]`}
+      >
+        {Icon && (
+          <>
+            <Icon className='mr-1 h-5 w-5 text-gray-400' /> {channel.label}
+            <Icons.AddPersonIcon className='ml-auto h-4 w-4 text-gray-200 opacity-0 transition hover:text-gray-100 group-hover:opacity-100' />
+          </>
+        )}
+      </a>
+    </Link>
   );
 };
 

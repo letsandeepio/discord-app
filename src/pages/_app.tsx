@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 import '@/styles/globals.css';
 
@@ -14,6 +15,8 @@ const servers = [
 ];
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+
   return (
     <>
       <Head>
@@ -28,7 +31,11 @@ function MyApp({ Component, pageProps }: AppProps) {
           </NavLink>
           <hr className='mx-2 rounded border-t-2 border-t-white/[.06]' />
           {servers.map((server) => (
-            <NavLink href={`/servers/${server.id}`} key={server.id}>
+            <NavLink
+              href={`/servers/${server.id}/channels/1`}
+              key={server.id}
+              active={+router.query.sid === +server.id}
+            >
               <img src={`/servers/${server.img}`} alt='' />
             </NavLink>
           ))}

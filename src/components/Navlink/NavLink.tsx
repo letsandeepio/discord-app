@@ -5,9 +5,10 @@ import React from 'react';
 interface NavLinkProps {
   href: string;
   children?: React.ReactNode;
+  active: boolean;
 }
 
-const NavLink: React.FC<NavLinkProps> = ({ href, children }) => {
+const NavLink: React.FC<NavLinkProps> = ({ href, children, active }) => {
   const router = useRouter();
   return (
     <Link href={href}>
