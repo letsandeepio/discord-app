@@ -39,7 +39,7 @@ export const ChevronIcon = (props: any) => {
   );
 };
 
-export const BookIcon = (props: any) => {
+export const Book = (props: any) => {
   return (
     <svg viewBox='0 0 40 40' {...props}>
       <path
@@ -52,7 +52,7 @@ export const BookIcon = (props: any) => {
   );
 };
 
-export const SpeakerphoneIcon = (props: any) => {
+export const Speakerphone = (props: any) => {
   return (
     <svg viewBox='0 0 24 24' {...props}>
       <path

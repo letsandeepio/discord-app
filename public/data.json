@@ -9,12 +9,12 @@
           {
             "id": 1,
             "label": "welcome",
-            "icon": "BookIcon"
+            "icon": "Book"
           },
           {
             "id": 2,
             "label": "announcements",
-            "icon": "SpeakerphoneIcon"
+            "icon": "Speakerphone"
           }
         ]
       },
@@ -24,15 +24,18 @@
         "channels": [
           {
             "id": 3,
-            "label": "general"
+            "label": "general",
+            "unread": true
           },
           {
             "id": 4,
-            "label": "plugins"
+            "label": "plugins",
+            "unread": true
           },
           {
             "id": 5,
-            "label": "help"
+            "label": "help",
+            "unread": true
           },
           {
             "id": 6,
@@ -54,11 +57,13 @@
           },
           {
             "id": 9,
-            "label": "refactoring-ui"
+            "label": "refactoring-ui",
+            "unread": true
           },
           {
             "id": 10,
-            "label": "heroicons"
+            "label": "heroicons",
+            "unread": true
           }
         ]
       },
@@ -76,7 +81,8 @@
           },
           {
             "id": 13,
-            "label": "random"
+            "label": "random",
+            "unread": true
           }
         ]
       },
@@ -90,7 +96,8 @@
           },
           {
             "id": 15,
-            "label": "showcase"
+            "label": "showcase",
+            "unread": true
           },
           {
             "id": 16,
