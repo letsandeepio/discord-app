@@ -1,12 +1,45 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useState } from 'react';
 
 import * as Icons from '@/components/Icons/Icons';
 
-import data from '../../../../../public/data.json';
+import mockData from '../../../../../public/data.json';
 
-const Server1 = () => {
+const data: DataInterface = mockData;
+
+export interface Server {
+  label: string;
+  categories: Category[];
+}
+
+export interface Category {
+  id: number;
+  label: string;
+  channels: IChannel[];
+}
+
+export interface IChannel {
+  id: number;
+  label: string;
+  icon?: string;
+  unread?: boolean;
+}
+
+interface DataInterface {
+  [key: string]: Server;
+}
+
+const Server = () => {
+  const [closedCategories, setClosedCategories] = useState<string[]>([]);
+
+  const toggleCategory = (categoryId: string) => {
+    setClosedCategories((prev) =>
+      prev.includes(categoryId)
+        ? closedCategories.filter((id) => id !== categoryId)
+        : [...prev, categoryId]
+    );
+  };
   return (
     <>
       <div className='flex w-60 flex-col bg-gray-800'>
@@ -22,16 +55,33 @@ const Server1 = () => {
           {data['1'].categories.map((category) => (
             <div key={category.id}>
               {category.label && (
-                <button className='flex w-full items-center px-0.5 font-title text-xs uppercase tracking-wide hover:text-gray-100'>
-                  <Icons.ArrowIcon className='mr-0.5 h-3 w-3' />
+                <button
+                  className='flex w-full items-center px-0.5 font-title text-xs uppercase tracking-wide hover:text-gray-100'
+                  onClick={() => toggleCategory(`${category.id}`)}
+                >
+                  <Icons.ArrowIcon
+                    className={`transition-0 mr-0.5 h-3 w-3 duration-200  ${
+                      closedCategories.includes(`${category.id}`)
+                        ? '-rotate-90'
+                        : ''
+                    }`}
+                  />
                   {category.label}
                 </button>
               )}
 
               <div className='mt-[5px] space-y-0.5'>
-                {category.channels.map((channel) => (
-                  <ChannelLink channel={channel} key={channel.id} />
-                ))}
+                {category.channels
+                  .filter((channel: any) => {
+                    const categoryOpen = !closedCategories.includes(
+                      `${category.id}`
+                    );
+
+                    return categoryOpen || channel.unread;
+                  })
+                  .map((channel) => (
+                    <ChannelLink channel={channel} key={channel.id} />
+                  ))}
               </div>
             </div>
           ))}
@@ -80,11 +130,11 @@ const ChannelLink = ({ channel }: ChannelLinkProps) => {
     : Channel.INACTIVE_READ;
 
   const classes = {
-    [Channel.ACTIVE]: 'bg-gray-550/[0.32] text-white',
-    [Channel.INACTIVE_READ]:
-      'text-white hover:bg-gray-550/[0.16] active:bg-gray-550/[0.24]',
+    [Channel.ACTIVE]: 'text-white bg-gray-550/[0.32]',
     [Channel.INACTIVE_UNREAD]:
-      'text-gray-300  hover:text-gray-100  hover:bg-gray-550/[0.16] active:bg-gray-550/[0.24]',
+      'text-white hover:bg-gray-550/[0.16] active:bg-gray-550/[0.24]',
+    [Channel.INACTIVE_READ]:
+      'text-gray-300 hover:text-gray-100 hover:bg-gray-550/[0.16] active:bg-gray-550/[0.24]',
   };
 
   return (
@@ -106,4 +156,4 @@ const ChannelLink = ({ channel }: ChannelLinkProps) => {
   );
 };
 
-export default Server1;
+export default Server;

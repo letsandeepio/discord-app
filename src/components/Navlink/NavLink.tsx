@@ -28,7 +28,7 @@ const NavLink: React.FC<NavLinkProps> = ({ href, children, active }) => {
           <div
             className={`${
               isActive
-                ? 'rounded-2xl bg-brand text-white'
+                ? 'rounded-2xl bg-brand'
                 : 'rounded-3xl bg-gray-700 text-gray-100 hover:rounded-2xl hover:bg-brand hover:text-white'
             } flex h-12 w-12 items-center justify-center  overflow-hidden transition-all duration-200 `}
           >
