@@ -1,7 +1,7 @@
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 
+import ChannelLink from '@/components/ChannelLink';
 import * as Icons from '@/components/Icons/Icons';
 
 import mockData from '../../../../../public/data.json';
@@ -30,8 +30,19 @@ interface DataInterface {
   [key: string]: Server;
 }
 
-const Server = () => {
+export default function Server() {
   const [closedCategories, setClosedCategories] = useState<string[]>([]);
+
+  const router = useRouter();
+
+  const server = data[`${router.query.sid}`];
+
+  const channel = server?.categories
+    .map((c) => c.channels)
+    .flat()
+    .find((channel) => `${channel.id}` === `${router?.query?.cid}`) ?? {
+    label: '',
+  };
 
   const toggleCategory = (categoryId: string) => {
     setClosedCategories((prev) =>
@@ -88,7 +99,9 @@ const Server = () => {
         </div>
       </div>
       <div className='flex flex-1 flex-col bg-gray-700'>
-        <div className='flex h-12 items-center px-3 shadow-sm'>general</div>
+        <div className='flex h-12 items-center px-3 shadow-sm'>
+          {channel?.label}
+        </div>
         <div className='flex-1 space-y-4 overflow-y-scroll p-3'>
           {[...Array(40)].map((_, i) => (
             <p key={i}>
@@ -102,58 +115,4 @@ const Server = () => {
       </div>
     </>
   );
-};
-
-enum Channel {
-  ACTIVE = 'active',
-  INACTIVE_READ = 'inactiveRead',
-  INACTIVE_UNREAD = 'inactiveUnread',
 }
-
-interface ChannelLinkProps {
-  channel: {
-    id: number;
-    label: string;
-    unread?: boolean;
-    icon?: string;
-  };
-}
-const ChannelLink = ({ channel }: ChannelLinkProps) => {
-  const Icon = channel.icon ? Icons[channel.icon] : Icons.HashtagIcon;
-  const router = useRouter();
-  const active = +channel.id === Number(router?.query?.cid);
-
-  const state = active
-    ? Channel.ACTIVE
-    : channel.unread
-    ? Channel.INACTIVE_UNREAD
-    : Channel.INACTIVE_READ;
-
-  const classes = {
-    [Channel.ACTIVE]: 'text-white bg-gray-550/[0.32]',
-    [Channel.INACTIVE_UNREAD]:
-      'text-white hover:bg-gray-550/[0.16] active:bg-gray-550/[0.24]',
-    [Channel.INACTIVE_READ]:
-      'text-gray-300 hover:text-gray-100 hover:bg-gray-550/[0.16] active:bg-gray-550/[0.24]',
-  };
-
-  return (
-    <Link href={`/servers/${1}/channels/${channel.id}`}>
-      <a
-        className={`${classes[state]} group relative mx-2 flex items-center rounded  px-2 py-2`}
-      >
-        {state === Channel.INACTIVE_UNREAD && (
-          <div className='absolute left-1 -ml-2 h-2 w-1 rounded-r-full bg-white'></div>
-        )}
-        {Icon && (
-          <>
-            <Icon className='mr-1 h-5 w-5 text-gray-400' /> {channel.label}
-            <Icons.AddPersonIcon className='ml-auto h-4 w-4 text-gray-200 opacity-0 transition hover:text-gray-100 group-hover:opacity-100' />
-          </>
-        )}
-      </a>
-    </Link>
-  );
-};
-
-export default Server;
