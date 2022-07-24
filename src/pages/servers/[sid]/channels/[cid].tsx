@@ -128,6 +128,13 @@ export default function Server() {
             <button className='text-gray-200 hover:text-gray-100'>
               <Icons.People className='mx-2 h-6 w-6' />
             </button>
+            <div className='mx-2'>
+              <input
+                type='text'
+                className='h-6 w-36 rounded border-none bg-gray-900 text-sm font-medium'
+                placeholder='Search'
+              />
+            </div>
             <button className='text-gray-200 hover:text-gray-100'>
               <Icons.Inbox className='mx-2 h-6 w-6' />
             </button>
