@@ -20,7 +20,7 @@ interface ChannelLinkProps {
 }
 
 const ChannelLink = ({ channel }: ChannelLinkProps) => {
-  const Icon = channel.icon ? Icons[channel.icon] : Icons.HashtagIcon;
+  const Icon = channel.icon ? Icons[channel.icon] : Icons.Hashtag;
   const router = useRouter();
   const active = +channel.id === Number(router?.query?.cid);
 
@@ -49,7 +49,7 @@ const ChannelLink = ({ channel }: ChannelLinkProps) => {
         {Icon && (
           <>
             <Icon className='mr-1 h-5 w-5 text-gray-400' /> {channel.label}
-            <Icons.AddPersonIcon className='ml-auto h-4 w-4 text-gray-200 opacity-0 transition hover:text-gray-100 group-hover:opacity-100' />
+            <Icons.AddPerson className='ml-auto h-4 w-4 text-gray-200 opacity-0 transition hover:text-gray-100 group-hover:opacity-100' />
           </>
         )}
       </a>
