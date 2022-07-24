@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { data as mockData } from '@/data';
 
@@ -24,6 +24,7 @@ export interface IChannel {
   icon?: string;
   unread?: boolean;
   description?: string;
+  messages?: any;
 }
 
 interface DataInterface {
@@ -43,6 +44,15 @@ export default function Server() {
     .find((channel) => `${channel.id}` === `${router?.query?.cid}`) ?? {
     label: '',
     description: '',
+    messages: [
+      {
+        id: '',
+        user: '',
+        avatarUrl: '',
+        date: '',
+        text: '',
+      },
+    ],
   };
 
   const toggleCategory = (categoryId: string) => {
@@ -149,16 +159,48 @@ export default function Server() {
           </div>
         </div>
         <div className='flex-1 space-y-4 overflow-y-scroll p-3'>
-          {[...Array(40)].map((_, i) => (
-            <p key={i}>
-              Message {i}. Lorem ipsum dolor sit amet consectetur adipisicing
-              elit. Vel saepe laudantium sed reprehenderit incidunt! Hic rem
-              quos reiciendis, fugit quae ratione beatae veniam laborum
-              voluptatem, iusto dolorum, voluptates suscipit quia.
-            </p>
-          ))}
+          {channel.messages.map((message: any, i) => {
+            return (
+              <div key={message.id}>
+                {i === 0 || message.user !== channel.messages[i - 1].user ? (
+                  <MessageWithUser message={message} />
+                ) : (
+                  <Message message={message} />
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
     </>
   );
 }
+
+const MessageWithUser = ({ message }: { message: any }) => {
+  return (
+    <div className='mt-[17px] flex py-0.5 pl-4 pr-16 leading-[22px] hover:bg-gray-950/[.07]'>
+      <img
+        className='mr-4 h-10 w-10 rounded-full'
+        src={message.avatarUrl}
+        alt=''
+      />
+      <div>
+        <p className='flex items-baseline'>
+          <span className='mr-2 text-sm font-medium text-green-600'>
+            {message.user}
+          </span>
+          <span className='text-xs text-gray-500'>{message.date}</span>
+        </p>
+        <p className='text-gray-100'>{message.text}</p>
+      </div>
+    </div>
+  );
+};
+
+const Message = ({ message }: { message: any }) => {
+  return (
+    <div className='mt-1 py-1 pl-4 pr-16 leading-[22px] hover:bg-gray-950/[.07]'>
+      <p className='pl-14 text-gray-100'>{message.text}</p>
+    </div>
+  );
+};
