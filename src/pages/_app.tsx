@@ -30,7 +30,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             <NavLink
               href={`/servers/${server.id}/channels/${server.categories[0].channels[0].id}`}
               key={server.id}
-              active={+router.query.sid === +server.id}
+              active={Number(router.query.sid) === +server.id}
             >
               <img src={`/servers/${server.img}`} alt='' />
             </NavLink>

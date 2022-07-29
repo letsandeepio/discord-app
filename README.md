@@ -1,21 +1,10 @@
 <div align="center">
-  <h1>🔋 ts-nextjs-tailwind-starter</h1>
-  <p>Next.js + Tailwind CSS + TypeScript starter packed with useful development features.</p>
-  <p>Made by <a href="https://theodorusclarence.com">Theodorus Clarence</a></p>
-  
-  
-  [![CodeFactor](https://www.codefactor.io/repository/github/theodorusclarence/ts-nextjs-tailwind-starter/badge/main)](https://www.codefactor.io/repository/github/theodorusclarence/ts-nextjs-tailwind-starter/overview/main)
-  [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=theodorusclarence_ts-nextjs-tailwind-starter&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=theodorusclarence_ts-nextjs-tailwind-starter)
-  [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=theodorusclarence_ts-nextjs-tailwind-starter&metric=bugs)](https://sonarcloud.io/dashboard?id=theodorusclarence_ts-nextjs-tailwind-starter)
-  [![GitHub Repo stars](https://img.shields.io/github/stars/theodorusclarence/ts-nextjs-tailwind-starter)](https://github.com/theodorusclarence/ts-nextjs-tailwind-starter/stargazers)
-  
-  [![Depfu](https://badges.depfu.com/badges/fc6e730632ab9dacaf7df478a08684a7/overview.svg)](https://depfu.com/github/theodorusclarence/ts-nextjs-tailwind-starter?project_id=30160)
-  [![Last Update](https://img.shields.io/badge/deps%20update-every%20sunday-blue.svg)](https://shields.io/)
+  <h1>Discord Clone</h1>
+  <p>Next.js + Tailwind CSS + TypeScript</p>
+  <p>TypeScript version built following   <a href="https://egghead.io/courses/craft-scalable-custom-made-interfaces-with-tailwind-css-8dfee898" target="_blank"> Craft Scalable, Custom-Made Interfaces with Tailwind CSS</a></p>
 </div>
 
 ## Features
-
-This repository is 🔋 battery packed with:
 
 - ⚡️ Next.js 12
 - ⚛️ React 18
