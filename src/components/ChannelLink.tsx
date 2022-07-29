@@ -39,7 +39,7 @@ const ChannelLink = ({ channel }: ChannelLinkProps) => {
   };
 
   return (
-    <Link href={`/servers/${1}/channels/${channel.id}`}>
+    <Link href={`/servers/${router?.query?.sid}/channels/${channel.id}`}>
       <a
         className={`${classes[state]} group relative mx-2 flex items-center rounded  px-2 py-2`}
       >

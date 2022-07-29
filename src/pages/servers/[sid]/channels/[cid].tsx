@@ -6,29 +6,34 @@ import { data as mockData } from '@/data';
 import ChannelLink from '@/components/ChannelLink';
 import * as Icons from '@/components/Icons/Icons';
 
-const data: DataInterface = mockData;
+const data: Server[] = mockData;
 export interface Server {
+  id: number;
   label: string;
+  img: string;
   categories: Category[];
 }
 
 export interface Category {
   id: number;
   label: string;
-  channels: IChannel[];
+  channels: Channel[];
 }
 
-export interface IChannel {
+export interface Channel {
   id: number;
   label: string;
-  icon?: string;
-  unread?: boolean;
   description?: string;
-  messages?: any;
+  icon?: string;
+  messages: Message[];
 }
 
-interface DataInterface {
-  [key: string]: Server;
+interface Message {
+  id: number;
+  user: string;
+  avatarUrl: string;
+  date: string;
+  text: string;
 }
 
 export default function Server() {
@@ -36,24 +41,12 @@ export default function Server() {
 
   const router = useRouter();
 
-  const server = data[`${router.query.sid}`];
+  const server = data.find((server) => server.id == Number(router?.query?.sid));
 
   const channel = server?.categories
     .map((c) => c.channels)
     .flat()
-    .find((channel) => `${channel.id}` === `${router?.query?.cid}`) ?? {
-    label: '',
-    description: '',
-    messages: [
-      {
-        id: '',
-        user: '',
-        avatarUrl: '',
-        date: '',
-        text: '',
-      },
-    ],
-  };
+    .find((channel) => channel.id === Number(router.query.cid));
 
   const toggleCategory = (categoryId: string) => {
     setClosedCategories((prev) =>
@@ -74,7 +67,7 @@ export default function Server() {
           <Icons.Chevron className='ml-auto h-[18px] w-[18px] opacity-80' />
         </button>
         <div className='flex-1 space-y-[21px] overflow-y-scroll pt-3 font-medium text-gray-300'>
-          {data['1'].categories.map((category) => (
+          {server?.categories.map((category) => (
             <div key={category.id}>
               {category.label && (
                 <button
@@ -114,11 +107,11 @@ export default function Server() {
           <div className='flex items-center'>
             <Icons.Hashtag className='mx-2 h-6 w-6 font-semibold text-gray-400' />
             <span className=' mr-2 whitespace-nowrap font-title text-white'>
-              {channel.label}
+              {channel?.label}
             </span>
           </div>
 
-          {channel.description && (
+          {channel?.description && (
             <>
               <div className='mx-2 h-6 w-px bg-white/[.06]'></div>
               <div className='mx-2 truncate text-sm font-medium text-gray-200'>
@@ -159,7 +152,7 @@ export default function Server() {
           </div>
         </div>
         <div className='flex-1 space-y-4 overflow-y-scroll p-3'>
-          {channel.messages.map((message: any, i) => {
+          {channel?.messages.map((message: any, i) => {
             return (
               <div key={message.id}>
                 {i === 0 || message.user !== channel.messages[i - 1].user ? (

@@ -5,14 +5,10 @@ import { useRouter } from 'next/router';
 
 import '@/styles/globals.css';
 
+import { data as mockData } from '@/data';
+
 import DiscordLogo from '@/components/DiscordLogo';
 import NavLink from '@/components/Navlink/NavLink';
-
-const servers = [
-  { id: '1', img: 'tailwind.png' },
-  { id: '2', img: 'next.png' },
-  { id: '3', img: 'mirage.png' },
-];
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -30,9 +26,9 @@ function MyApp({ Component, pageProps }: AppProps) {
             <DiscordLogo className='h-5 w-7' />
           </NavLink>
           <hr className='mx-2 rounded border-t-2 border-t-white/[.06]' />
-          {servers.map((server) => (
+          {mockData.map((server) => (
             <NavLink
-              href={`/servers/${server.id}/channels/1`}
+              href={`/servers/${server.id}/channels/${server.categories[0].channels[0].id}`}
               key={server.id}
               active={+router.query.sid === +server.id}
             >
