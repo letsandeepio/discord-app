@@ -57,7 +57,7 @@ export default function Server() {
   };
   return (
     <>
-      <div className='flex w-60 flex-col bg-gray-800'>
+      <div className='hidden w-60 flex-col bg-gray-800 md:flex'>
         <button className='flex h-12 items-center px-4 font-title text-[15px] font-semibold text-white shadow-sm transition hover:bg-gray-550/[0.16]'>
           <div className='relative mr-1 h-4 w-4'>
             <Icons.Verified className='absolute h-4 w-4 text-gray-550' />
@@ -110,17 +110,26 @@ export default function Server() {
               {channel?.label}
             </span>
           </div>
-
           {channel?.description && (
             <>
-              <div className='mx-2 h-6 w-px bg-white/[.06]'></div>
-              <div className='mx-2 truncate text-sm font-medium text-gray-200'>
+              <div className='mx-2 hidden h-6 w-px bg-white/[.06] md:block'></div>
+              <div className='mx-2 hidden truncate text-sm font-medium text-gray-200 md:block'>
                 {channel.description}
               </div>
             </>
           )}
+          {/* mobile icons */}
+          <div className='ml-auto flex items-center md:hidden'>
+            <button className='text-gray-200 hover:text-gray-100'>
+              <Icons.HashtagWithSpeechBubble className='mx-2 h-6 w-6' />
+            </button>
 
-          <div className='ml-auto flex items-center'>
+            <button className='text-gray-200 hover:text-gray-100'>
+              <Icons.People className='mx-2 h-6 w-6' />
+            </button>
+          </div>
+          {/* desktop icons */}
+          <div className='ml-auto hidden items-center md:flex'>
             <button className='text-gray-200 hover:text-gray-100'>
               <Icons.HashtagWithSpeechBubble className='mx-2 h-6 w-6' />
             </button>
@@ -152,7 +161,7 @@ export default function Server() {
           </div>
         </div>
         <div className='flex-1 space-y-4 overflow-y-scroll p-3'>
-          {channel?.messages.map((message: any, i) => {
+          {channel?.messages.map((message: Message, i) => {
             return (
               <div key={message.id}>
                 {i === 0 || message.user !== channel.messages[i - 1].user ? (
@@ -169,7 +178,7 @@ export default function Server() {
   );
 }
 
-const MessageWithUser = ({ message }: { message: any }) => {
+const MessageWithUser = ({ message }: { message: Message }) => {
   return (
     <div className='mt-[17px] flex py-0.5 pl-4 pr-16 leading-[22px] hover:bg-gray-950/[.07]'>
       <img
