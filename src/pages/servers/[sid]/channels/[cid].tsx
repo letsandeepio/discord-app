@@ -4,7 +4,11 @@ import { useState } from 'react';
 import { data as mockData } from '@/data';
 
 import ChannelLink from '@/components/ChannelLink';
+import DesktopIcons from '@/components/DesktopIcons/DesktopIcons';
 import * as Icons from '@/components/Icons/Icons';
+import Message from '@/components/Message/Message';
+import MessageWithUser from '@/components/Message/MessageWithUser';
+import MobileIcons from '@/components/MobileIcons/MobileIcons';
 
 const data: Server[] = mockData;
 export interface Server {
@@ -28,7 +32,7 @@ export interface Channel {
   messages: Message[];
 }
 
-interface Message {
+export interface Message {
   id: number;
   user: string;
   avatarUrl: string;
@@ -36,10 +40,10 @@ interface Message {
   text: string;
 }
 
-export default function Server() {
-  const [closedCategories, setClosedCategories] = useState<string[]>([]);
-
+const Server = () => {
   const router = useRouter();
+
+  const [closedCategories, setClosedCategories] = useState<string[]>([]);
 
   const server = data.find((server) => server.id == Number(router?.query?.sid));
 
@@ -119,46 +123,9 @@ export default function Server() {
             </>
           )}
           {/* mobile icons */}
-          <div className='ml-auto flex items-center md:hidden'>
-            <button className='text-gray-200 hover:text-gray-100'>
-              <Icons.HashtagWithSpeechBubble className='mx-2 h-6 w-6' />
-            </button>
-
-            <button className='text-gray-200 hover:text-gray-100'>
-              <Icons.People className='mx-2 h-6 w-6' />
-            </button>
-          </div>
+          <MobileIcons />
           {/* desktop icons */}
-          <div className='ml-auto hidden items-center md:flex'>
-            <button className='text-gray-200 hover:text-gray-100'>
-              <Icons.HashtagWithSpeechBubble className='mx-2 h-6 w-6' />
-            </button>
-            <button className='text-gray-200 hover:text-gray-100'>
-              <Icons.Bell className='mx-2 h-6 w-6' />
-            </button>
-            <button className='text-gray-200 hover:text-gray-100'>
-              <Icons.Pin className='mx-2 h-6 w-6' />
-            </button>
-            <button className='text-gray-200 hover:text-gray-100'>
-              <Icons.People className='mx-2 h-6 w-6' />
-            </button>
-            <div className='relative mx-2'>
-              <input
-                type='text'
-                className='h-6 w-36 rounded border-none bg-gray-900 px-1.5 text-sm font-medium'
-                placeholder='Search'
-              />
-              <div className='absolute inset-y-0 right-0 flex items-center'>
-                <Icons.Spyglass className='mr-1.5 h-4 w-4 text-gray-400' />
-              </div>
-            </div>
-            <button className='text-gray-200 hover:text-gray-100'>
-              <Icons.Inbox className='mx-2 h-6 w-6' />
-            </button>
-            <button className='text-gray-200 hover:text-gray-100'>
-              <Icons.QuestionCircle className='mx-2 h-6 w-6' />
-            </button>
-          </div>
+          <DesktopIcons />
         </div>
         <div className='flex-1 space-y-4 overflow-y-scroll p-3'>
           {channel?.messages.map((message: Message, i) => {
@@ -176,33 +143,6 @@ export default function Server() {
       </div>
     </>
   );
-}
-
-const MessageWithUser = ({ message }: { message: Message }) => {
-  return (
-    <div className='mt-[17px] flex py-0.5 pl-4 pr-16 leading-[22px] hover:bg-gray-950/[.07]'>
-      <img
-        className='mr-4 h-10 w-10 rounded-full'
-        src={message.avatarUrl}
-        alt=''
-      />
-      <div>
-        <p className='flex items-baseline'>
-          <span className='mr-2 text-sm font-medium text-green-600'>
-            {message.user}
-          </span>
-          <span className='text-xs text-gray-500'>{message.date}</span>
-        </p>
-        <p className='text-gray-100'>{message.text}</p>
-      </div>
-    </div>
-  );
 };
 
-const Message = ({ message }: { message: any }) => {
-  return (
-    <div className='py-0.5 pl-4 pr-16 leading-[22px] hover:bg-gray-950/[.07]'>
-      <p className='pl-14 text-gray-100'>{message.text}</p>
-    </div>
-  );
-};
+export default Server;

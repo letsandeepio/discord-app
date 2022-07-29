@@ -10,7 +10,7 @@ import { data as mockData } from '@/data';
 import DiscordLogo from '@/components/DiscordLogo';
 import NavLink from '@/components/Navlink/NavLink';
 
-function MyApp({ Component, pageProps }: AppProps) {
+const MyApp = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
 
   return (
@@ -41,6 +41,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       </div>
     </>
   );
-}
+};
 
 export default MyApp;
