@@ -2,7 +2,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
 
-import * as Icons from '@/components/Icons/Icons';
+import * as AllIcons from '@/components/Icons/Icons';
+
+const Icons: { [key: string]: any } = AllIcons;
 
 enum Channel {
   ACTIVE = 'active',
