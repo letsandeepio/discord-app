@@ -1,7 +1,8 @@
 <div align="center">
   <h1>Discord Clone</h1>
   <p>Next.js + Tailwind CSS + TypeScript</p>
-  <p>TypeScript version built following   <a href="https://egghead.io/courses/craft-scalable-custom-made-interfaces-with-tailwind-css-8dfee898" target="_blank"> Craft Scalable, Custom-Made Interfaces with Tailwind CSS</a></p>
+  <p>TypeScript version built following   <a href="https://egghead.io/courses/craft-scalable-custom-made-interfaces-with-tailwind-css-8dfee898" target="_blank"> Craft Scalable, Custom-Made Interfaces with Tailwind CSS by [@samselikoff
+]( https://github.com/samselikoff )</a></p>
 </div>
 
 ## Features
