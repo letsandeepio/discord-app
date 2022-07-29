@@ -25,12 +25,6 @@
 - 🗺 Site Map — Automatically generate sitemap.xml
 - 📦 Expansion Pack — Easily install common libraries, additional components, and configs
 
-See the 👉 [feature details and changelog](https://github.com/theodorusclarence/ts-nextjs-tailwind-starter/blob/main/CHANGELOG.md) 👈 for more.
-
-You can also check all of the **details and demos** on my blog post:
-
-- [One-stop Starter to Maximize Efficiency on Next.js & Tailwind CSS Projects](https://theodorusclarence.com/blog/one-stop-starter)
-
 ## Getting Started
 
 ### 1. Clone this template using one of the three ways:
@@ -82,13 +76,3 @@ Don't forget to change the package name in package.json
 ### 5. Commit Message Convention
 
 This starter is using [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/), it is mandatory to use it to commit changes.
-
-## Expansion Pack 📦
-
-This starter is now equipped with an [expansion pack](https://github.com/theodorusclarence/expansion-pack).
-
-You can easily add expansion such as React Hook Form + Components, Storybook, and more just using a single command line.
-
-https://user-images.githubusercontent.com/55318172/146631994-e1cac137-1664-4cfe-950b-a96decc1eaa6.mp4
-
-Check out the [expansion pack repository](https://github.com/theodorusclarence/expansion-pack) for the commands

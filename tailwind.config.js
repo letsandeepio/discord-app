@@ -13,8 +13,8 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        primary: ['Open Sans', ...fontFamily.sans],
-        title: ['Lexend Deca', 'Open Sans', ...fontFamily.sans],
+        primary: ['Whitney', 'Open Sans', ...fontFamily.sans],
+        title: ['Ginto', 'Open Sans', ...fontFamily.sans],
       },
       colors: {
         primary: {

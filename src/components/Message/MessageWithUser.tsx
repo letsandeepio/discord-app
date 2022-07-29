@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Message } from '@/pages/servers/[sid]/channels/[cid]';
+
 const MessageWithUser = ({ message }: { message: Message }) => {
   return (
     <div className='mt-[17px] flex py-0.5 pl-4 pr-16 leading-[22px] hover:bg-gray-950/[.07]'>
